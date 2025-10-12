@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/all.min.css" />
+  <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div class="w-75 mx-auto my-5">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control border-0 rounded-0 border-bottom" id="productname"
+        placeholder="name@example.com">
+      <label for="productname">Product Name</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control border-0 rounded-0 border-bottom" id="productprice"
+        placeholder="name@example.com">
+      <label for="productprice">Product price</label>
+    </div>
+
+    <div class="form-floating mt-3">
+      <select class="form-select border-0 rounded-0 border-bottom" id="productCategory"
+        aria-label="Floating label select example">
+        <option id="default" selected hidden disabled>Choose product category</option>
+        <option>phone</option>
+        <option>printer</option>
+        <option>laptop</option>
+        <option>camera</option>
+        <option>tv</option>
+        <option>headphones</option>
+      </select>
+      <label for="productCategory">Works with selects</label>
+    </div>
+
+    <div class="form-floating mb- mt-3">
+      <textarea class="form-control border-0 rounded-0 border-bottom" id="productDescription"
+        placeholder="name@example.com"></textarea>
+      <label for="productDescription">product description</label>
+    </div>
+
+    <div class="form-floating mb-3 mt-3">
+      <input type="file" class="form-control border-0 rounded-0 border-bottom" id="productFile"
+        placeholder="name@example.com">
+      <label for="productFile">Product file</label>
+    </div>
+
+    <div class="d-flex">
+      <button onclick="addProduct()" class="btn btn-info text-light mt-3">Add product</button>
+      <div id="bt"></div>
+    </div>
+  </div>
+
+
+  <div class="container my-5">
+    <div class="form-floating mb-3">
+      <input oninput="realTimeSearch(this.value)" type="search" class="form-control " id="productprice"
+        placeholder="name@example.com">
+      <label for="productprice">Search By product Name</label>
+    </div>
+    <div id="dis" class="row g-4 row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 ">
+
+
+    </div>
+  </div>
+
+
+  <script src="./js/bootstrap.bundle.min.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
