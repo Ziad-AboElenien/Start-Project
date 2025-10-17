@@ -53,29 +53,29 @@ function reset() {
 }
 
 // display function
-function display(displayArr) {
-    var strdisplayArr = ``;
-    for (var i = 0; i < displayArr.length; i++) {
-        strdisplayArr += ` <div class="col">
+function display(targetList) {
+    var strtargetList = ``;
+    for (var i = 0; i < targetList.length; i++) {
+        strtargetList += ` <div class="col">
         <div class="item shadow-sm border p-2">
           <div class="img-container mb-4">
-            <img class="w-100 h-100 object-fit-contain " src="./images/${displayArr[i].productImageName}" alt="photo">
+            <img class="w-100 h-100 object-fit-contain " src="./images/${targetList[i].productImageName}" alt="photo">
           </div>
-          <h3 class="fs-5 pt-3">${displayArr[i].productName}</h3>
-          <p class="text-secondary">${displayArr[i].productDescription}</p>
-          <p><span class="fw-semibold">Category :</span> ${displayArr[i].productCategory}</p>
+          <h3 class="fs-5 pt-3">${targetList[i].productName}</h3>
+          <p class="text-secondary">${targetList[i].productDescription}</p>
+          <p><span class="fw-semibold">Category :</span> ${targetList[i].productCategory}</p>
           <div class="d-flex justify-content-between">
-            <p class="fw-semibold">${displayArr[i].productPrice}  EGP</p>
+            <p class="fw-semibold">${targetList[i].productPrice}  EGP</p>
             <div class="icons">
-              <i onclick="deleteItem(${i})" class="fs-4 text-danger fa-solid fa-trash-can"></i>
-              <i onclick="returnForUpdateProduct(${i})" class="fs-4 text-success  fa-solid fa-pen-to-square"></i>
+              <i onclick="deleteItem(${targetList.length == productList.length ? i : targetList[i].oldIndex})" class="fs-4 text-danger fa-solid fa-trash-can"></i>
+              <i onclick="returnForUpdateProduct(${targetList.length == productList.length ? i : targetList[i].updatedIndex})" class="fs-4 text-success  fa-solid fa-pen-to-square"></i>
             </div>
           </div>
         </div>
       </div>` ;
     }
 
-    document.getElementById("dis").innerHTML = strdisplayArr
+    document.getElementById("dis").innerHTML = strtargetList
 }
 
 // delete function
@@ -95,6 +95,8 @@ function realTimeSearch(searchText) {
 
     for (var i = 0; i < productList.length; i++) {
         if (productList[i].productName.toLowerCase().includes(searchText.toLowerCase())) {
+            productList[i].oldIndex = i ;
+            productList[i].updatedIndex = i ;
             filterdList.push(productList[i])
         }
     }
@@ -110,6 +112,8 @@ function returnForUpdateProduct(i) {
     productCategoryValue.value = productList[i].productCategory
     productDescriptionValue.value = productList[i].productDescription
 
+   
+
     document.getElementById("bt").innerHTML = `      <button onclick="excuteUpdate(${i})" 
     class="btn btn-info text-light mt-3 ms-3">UPDATE</button>`
 
@@ -122,6 +126,13 @@ function excuteUpdate(productToUpdate) {
     productList[productToUpdate].productPrice = productPriceValue.value
     productList[productToUpdate].productCategory = productCategoryValue.value
     productList[productToUpdate].productDescription = productDescriptionValue.value
+
+     if(productImageNameValue.files.length > 0)
+    {
+        productList[productToUpdate].productImageName = productImageNameValue.files[0].name
+    }
+
+
 
     console.log(productList[productToUpdate])
     // save updates in local storage
