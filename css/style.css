@@ -36,3 +36,32 @@ div.img-container {
   border-color: red !important;
   border-width: 3px !important;
 }
+
+h1::after
+{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left:110%;
+  border: solid 28px;
+  border-color: transparent transparent   transparent rgb(24, 96, 155);
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
+h1::before
+{
+  content: "";
+  position: absolute;
+  top: 50%;
+  right:110%;
+  border: solid 28px;
+  border-color: transparent rgb(24, 96, 155)   transparent transparent;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+}
