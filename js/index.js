@@ -112,8 +112,7 @@ function returnForUpdateProduct(i) {
     productCategoryValue.value = productList[i].productCategory
     productDescriptionValue.value = productList[i].productDescription
 
-   
-
+    // DISPLAY
     document.getElementById("bt").innerHTML = `      <button onclick="excuteUpdate(${i})" 
     class="btn btn-info text-light mt-3 ms-3">UPDATE</button>`
 
